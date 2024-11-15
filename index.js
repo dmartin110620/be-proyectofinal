@@ -5,7 +5,10 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://be-proyectofinal-git-dev-daniel-martins-projects-c37a0e5e.vercel.app/',
+  credentials: true
+}));
 
 // Conectar a MongoDB
 const mongoURL = process.env.DB_URL;
