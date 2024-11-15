@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://be-proyectofinal-git-dev-daniel-martins-projects-c37a0e5e.vercel.app/',
+  origin: 'https://be-proyectofinal-git-dev-daniel-martins-projects-c37a0e5e.vercel.app',
   credentials: true
 }));
 
