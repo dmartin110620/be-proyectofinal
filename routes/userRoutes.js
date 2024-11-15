@@ -1,11 +1,9 @@
-const { Router } = require('express');
+const express = require('express');
 const { getUserProfile, updateUserProfile } = require('../controllers/userController');
-const authMiddleware = require('../middlewares/authMiddlewares');
-
-const router = Router();
+const authMiddleware = require('../middlewares/authMiddlewares.js');
+const router = express.Router();
 
 router.get('/profile', authMiddleware, getUserProfile);
-
 router.put('/profile', authMiddleware, updateUserProfile);
 
-module.exports = router;
+module.exports = router;  // Exporting the router, not an object

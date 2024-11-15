@@ -21,22 +21,18 @@ mongoose.connect(mongoURL)
 
 
 // Rutas
-const authRoutes = require('./routes/authRoutes.js');
-const driverRoutes = require('./routes/userRoutes');
-// const passengerRoutes = require('./routes/passenger');
-app.use('/api/auth', authRoutes); // Ruta para autenticación
-app.use('/api/driver', driverRoutes); // Ruta para los conductores
-// app.use('/api/passenger', passengerRoutes); // Ruta para los pasajeros
+app.use('/api/auth', require('./routes/authRoutes.js')); // Ruta para autenticación
+app.use('/api/driver', require('./routes/userRoutes.js')); // Ruta para los conductores
+// app.use('/api/passenger', require('./routes/passenger')); // Ruta para los pasajeros
 
 
-
-
-app.use((req, res) => {
-  res.status(404).json("Ruta no encontrada");
-});
 
 app.get('/', (req, res) => {
     res.send('API corriendo');
+});
+
+app.use((req, res) => {
+  res.status(404).json("Ruta no encontrada");
 });
 
 const PORT = process.env.PORT || 3000;
