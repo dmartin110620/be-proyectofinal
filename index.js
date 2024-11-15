@@ -5,11 +5,35 @@ require('dotenv').config();
 const app = express();
 
 app.use(express.json());
+// app.use(cors({
+//   origin: 'https://fe-proyectofinal-7nde9vuhz-daniel-martins-projects-c37a0e5e.vercel.app',
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// }));
+
+const allowedOrigins = [
+  'https://fe-proyectofinal-7nde9vuhz-daniel-martins-projects-c37a0e5e.vercel.app',
+  'https://fe-proyectofinal-82w9bro7b-daniel-martins-projects-c37a0e5e.vercel.app',
+  'https://be-proyectofinal-git-dev-daniel-martins-projects-c37a0e5e.vercel.app',
+  'https://be-proyectofinal-8o5s1y7n7-daniel-martins-projects-c37a0e5e.vercel.app'
+];
+
 app.use(cors({
-  origin: 'https://fe-proyectofinal-7nde9vuhz-daniel-martins-projects-c37a0e5e.vercel.app',
+  origin: function(origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+app.use(cors({
+  origin: '*',  // Allow all origins
+}));
+
 
 // Conectar a MongoDB
 const mongoURL = process.env.DB_URL;
