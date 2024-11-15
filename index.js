@@ -6,8 +6,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors({
-  origin: 'https://be-proyectofinal-git-dev-daniel-martins-projects-c37a0e5e.vercel.app',
-  credentials: true
+  origin: 'https://fe-proyectofinal-7nde9vuhz-daniel-martins-projects-c37a0e5e.vercel.app',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 }));
 
 // Conectar a MongoDB
