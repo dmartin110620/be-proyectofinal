@@ -61,11 +61,11 @@ const loginUser = async (req, res) => {
 
         res.json({ token });
 
-        if (email === 'test@example.com' && password === 'password123') {
-            return res.status(200).json({ token: 'fake-jwt-token', role: 'pasajero' });
-        } else {
-            return res.status(401).json({ message: 'Credenciales incorrectas' });
-        }
+        // if (email === 'test@example.com' && password === 'password123') {
+        //     return res.status(200).json({ token: 'fake-jwt-token', role: 'pasajero' });
+        // } else {
+        //     return res.status(401).json({ message: 'Credenciales incorrectas' });
+        // }
 
     } catch (error) {
         console.error('Error during login:', error);
