@@ -6,4 +6,4 @@ const router = express.Router();
 router.get('/profile', authMiddleware, getUserProfile);
 router.put('/profile', authMiddleware, updateUserProfile);
 
-module.exports = router;  // Exporting the router, not an object
+module.exports = router;

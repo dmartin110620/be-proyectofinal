@@ -39,20 +39,19 @@ const updateUserProfile = async (req, res) => {
 };
 
 const deleteUserAccount = async (req, res) => {
-  try {
-    const userId = req.user.userId;
+    try {
+        const userId = req.user.userId;
 
-    // Buscar y eliminar al usuario en la base de datos
-    const user = await User.findByIdAndDelete(userId);
-    if (!user) {
-      return res.status(404).json({ message: 'Usuario no encontrado' });
+        const user = await User.findByIdAndDelete(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+
+        res.json({ message: 'Cuenta eliminada con éxito' });
+    } catch (error) {
+        console.error('Error al eliminar la cuenta del usuario:', error);
+        res.status(500).json({ message: 'Error del servidor' });
     }
-
-    res.json({ message: 'Cuenta eliminada con éxito' });
-  } catch (error) {
-    console.error('Error al eliminar la cuenta del usuario:', error);
-    res.status(500).json({ message: 'Error del servidor' });
-  }
 };
 
 module.exports = {

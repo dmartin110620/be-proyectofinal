@@ -13,9 +13,6 @@ app.use(express.json());
 
 const allowedOrigins = [
   'https://fe-proyectofinal-7nde9vuhz-daniel-martins-projects-c37a0e5e.vercel.app',
-  'https://fe-proyectofinal-82w9bro7b-daniel-martins-projects-c37a0e5e.vercel.app',
-  'https://be-proyectofinal-git-dev-daniel-martins-projects-c37a0e5e.vercel.app',
-  'https://be-proyectofinal-8o5s1y7n7-daniel-martins-projects-c37a0e5e.vercel.app'
 ];
 
 app.use(cors({
@@ -29,11 +26,6 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
-app.use(cors({
-  origin: '*',  // Allow all origins
-}));
-
 
 // Conectar a MongoDB
 const mongoURL = process.env.DB_URL;
@@ -49,9 +41,9 @@ mongoose.connect(mongoURL)
 
 
 // Rutas
-app.use('/api/auth', require('./routes/authRoutes.js')); // Ruta para autenticación
-app.use('/api/driver', require('./routes/userRoutes.js')); // Ruta para los conductores
-// app.use('/api/passenger', require('./routes/passenger')); // Ruta para los pasajeros
+app.use('/api/auth', require('./routes/authRoutes.js')); 
+app.use('/api/driver', require('./routes/userRoutes.js')); 
+// app.use('/api/passenger', require('./routes/passenger')); 
 
 
 
